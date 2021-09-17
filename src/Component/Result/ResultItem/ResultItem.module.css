@@ -1,0 +1,15 @@
+.item{
+  width: auto;
+  height: 35px;
+  /*border: 2px solid red;*/
+  color: white;
+  font-family:cursive;
+  font-size: 22px;
+  display: inline-block;
+  margin-right: 30px;
+  
+}
+
+.letter{
+  color:#4E464A;
+}

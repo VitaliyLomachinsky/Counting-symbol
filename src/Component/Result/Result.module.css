@@ -13,3 +13,11 @@
   color: #4E464A;
   font-family:cursive;
 }
+
+.AllItem{
+  width:auto;
+  height:min-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: absolute;
+}
