@@ -1,0 +1,15 @@
+.main{
+  background-color: #92AA9E;
+  width: auto;
+  height: auto;
+  grid-area: Result;  
+  border-radius: 10px;
+  border: 2px solid #4E464A;
+}
+
+.title{
+  text-align: center;
+  margin: 2px;
+  color: #4E464A;
+  font-family:cursive;
+}
