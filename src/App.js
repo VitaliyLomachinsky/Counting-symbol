@@ -11,8 +11,10 @@ function App(props) {
           <TextHolder state={props.state} dispatch={props.dispatch}/>
           <Options dispatch={props.dispatch}/>
           <Result state={props.state}/>
+          
         </div>
       </div>
+      <span className="author">@Vitaliy Lomachinsky PI-321</span>
     </div>
   );
 }
