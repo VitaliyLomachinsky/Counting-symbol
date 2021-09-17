@@ -9,7 +9,7 @@ function App(props) {
       <div className="App_inside">
         <div className="App_wrapper">
           <TextHolder state={props.state} dispatch={props.dispatch}/>
-          <Options />
+          <Options dispatch={props.dispatch}/>
           <Result state={props.state}/>
         </div>
       </div>

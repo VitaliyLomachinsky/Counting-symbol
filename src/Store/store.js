@@ -1,4 +1,5 @@
 const CHANGE_TEXTAREA = "CHANGE_TEXTAREA";
+const CLEAR = "CLEAR";
 
 let store = {
   _state: {
@@ -8,14 +9,18 @@ let store = {
   GetState() {
     return this._state;
   },
-
+  
   dispatch(action) {
-    if ((action.type = CHANGE_TEXTAREA)) {
-      //change
+    debugger;
+    if ((action.type == CHANGE_TEXTAREA)) {
       this._state.text = action.text;
+      CountingLogic();
+    } else if ((action.type == CLEAR)) {
+      this._state.text = "";
+      this._state.data = [];
     }
-    CountingLogic();
-    console.log(this._state.data);
+
+    
     this.RerenderAll(this._state);
   },
 
@@ -57,6 +62,10 @@ function compare(a, b) {
 export const TextAreaCreator = (text) => ({
   type: CHANGE_TEXTAREA,
   text: text,
+});
+
+export const ClearCreator = (text) => ({
+  type: CLEAR,
 });
 
 export default store;
