@@ -39,11 +39,20 @@ function CountingLogic() {
 
     if (result == undefined) {
       if (split[i] != " " && split[i] != "\n") {
-        store.GetState().data.push({ symbol: split[i], count: 1 });
+        store.GetState().data.push({
+          symbol: split[i],
+          count: 1,
+          frequency: 1 / store.GetState().text.length,
+        });
       }
     } else {
+      debugger;
       let index = store.GetState().data.indexOf(result);
       store.GetState().data[index].count++;
+
+      let a = store.GetState().data[index].count;
+      let b = store.GetState().text.length;
+      store.GetState().data[index].frequency = a / b;
     }
   }
   store.GetState().data.sort(compare);
