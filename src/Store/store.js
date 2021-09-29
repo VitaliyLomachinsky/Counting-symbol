@@ -1,5 +1,6 @@
 const CHANGE_TEXTAREA = "CHANGE_TEXTAREA";
 const CLEAR = "CLEAR";
+const CHANGE_GISTOGRAMMA = "CHANGE_GISTOGRAMMA";
 
 let store = {
   _state: {
@@ -9,18 +10,17 @@ let store = {
   GetState() {
     return this._state;
   },
-  
+
   dispatch(action) {
-    debugger;
-    if ((action.type == CHANGE_TEXTAREA)) {
+    if (action.type == CHANGE_TEXTAREA) {
       this._state.text = action.text;
       CountingLogic();
-    } else if ((action.type == CLEAR)) {
+    } else if (action.type == CLEAR) {
       this._state.text = "";
       this._state.data = [];
+    } else if (action.type == CHANGE_GISTOGRAMMA) {
     }
 
-    
     this.RerenderAll(this._state);
   },
 
@@ -66,6 +66,10 @@ export const TextAreaCreator = (text) => ({
 
 export const ClearCreator = (text) => ({
   type: CLEAR,
+});
+
+export const ChangeGistogrammaCreator = (text) => ({
+  type: CHANGE_GISTOGRAMMA,
 });
 
 export default store;
