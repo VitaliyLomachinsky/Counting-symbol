@@ -6,6 +6,7 @@ let store = {
   _state: {
     text: "",
     data: [],
+    textCount: 0,
   },
   GetState() {
     return this._state;
@@ -18,7 +19,7 @@ let store = {
     } else if (action.type == CLEAR) {
       this._state.text = "";
       this._state.data = [];
-    } else if (action.type == CHANGE_GISTOGRAMMA) {
+      this._state.textCount = 0;
     }
 
     this.RerenderAll(this._state);
@@ -33,7 +34,8 @@ let store = {
 function CountingLogic() {
   var split = store.GetState().text.split("");
   store.GetState().data = [];
-
+  store.GetState().textCount = store.GetState().text.replace(/\s/g, "").length;
+  debugger;
   for (let i = 0; i < split.length; i++) {
     let result = store.GetState().data.find((temp) => temp.symbol === split[i]);
 
@@ -42,16 +44,15 @@ function CountingLogic() {
         store.GetState().data.push({
           symbol: split[i],
           count: 1,
-          frequency: 1 / store.GetState().text.length,
+          frequency: 1 / store.GetState().textCount,
         });
       }
     } else {
-      debugger;
       let index = store.GetState().data.indexOf(result);
       store.GetState().data[index].count++;
 
       let a = store.GetState().data[index].count;
-      let b = store.GetState().text.length;
+      let b = store.GetState().textCount;
       store.GetState().data[index].frequency = a / b;
     }
   }

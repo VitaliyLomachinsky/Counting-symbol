@@ -5,13 +5,13 @@ const BarChart = (props) => {
   let NewCountArray = [];
   let NewLabelArray = [];
   let NewFrequencyArray = [];
-  let Count = props.state.text.length;
+  let Count = props.state.textCount;
   debugger;
   if (props.state.data != undefined) {
     for (let i = 0; i < props.state.data.length; i++) {
       NewCountArray.push(props.state.data[i].count);
       NewLabelArray.push(props.state.data[i].symbol);
-      NewFrequencyArray.push(props.state.data[i].frequency * 100 );
+      NewFrequencyArray.push(props.state.data[i].frequency * 100);
     }
   }
 
@@ -31,6 +31,7 @@ const BarChart = (props) => {
           ],
         }}
       />
+      <h2 className={s.text}>Count={Count}</h2>
       <h2 className={s.text}>
         P.min({NewLabelArray[NewLabelArray.length - 1]})=
         {NewCountArray[NewLabelArray.length - 1] / Count}

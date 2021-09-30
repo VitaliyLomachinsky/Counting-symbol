@@ -5,7 +5,7 @@ const ResultItem = (props) => {
     <div className={s.item}>
       <span>
         <span className={s.letter}>{props.letter}</span> - {props.count}(
-        {props.frequency.toFixed(2)}),
+        {props.frequency.toFixed(4)}),
       </span>
     </div>
   );
