@@ -1,7 +1,7 @@
 .App {
     background-color: #DDDCCA;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
 .App_inside{
     display: block;
@@ -16,8 +16,14 @@
     grid-gap: 1%;
     grid-template-areas: 
     "TextHolder Options"
-    "Result Result";
+    "Result Result"
+    "Gistogramma Gistogramma";
     
     padding: 20px;
     border-radius:20px ;
+}
+
+.author{
+    margin-top: 10px;
+    display: block;
 }

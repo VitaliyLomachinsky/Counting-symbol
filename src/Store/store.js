@@ -1,26 +1,27 @@
 const CHANGE_TEXTAREA = "CHANGE_TEXTAREA";
 const CLEAR = "CLEAR";
+const CHANGE_GISTOGRAMMA = "CHANGE_GISTOGRAMMA";
 
 let store = {
   _state: {
     text: "",
     data: [],
+    textCount: 0,
   },
   GetState() {
     return this._state;
   },
-  
+
   dispatch(action) {
-    debugger;
-    if ((action.type == CHANGE_TEXTAREA)) {
+    if (action.type == CHANGE_TEXTAREA) {
       this._state.text = action.text;
       CountingLogic();
-    } else if ((action.type == CLEAR)) {
+    } else if (action.type == CLEAR) {
       this._state.text = "";
       this._state.data = [];
+      this._state.textCount = 0;
     }
 
-    
     this.RerenderAll(this._state);
   },
 
@@ -33,17 +34,26 @@ let store = {
 function CountingLogic() {
   var split = store.GetState().text.split("");
   store.GetState().data = [];
-
+  store.GetState().textCount = store.GetState().text.replace(/\s/g, "").length;
+  debugger;
   for (let i = 0; i < split.length; i++) {
     let result = store.GetState().data.find((temp) => temp.symbol === split[i]);
 
     if (result == undefined) {
       if (split[i] != " " && split[i] != "\n") {
-        store.GetState().data.push({ symbol: split[i], count: 1 });
+        store.GetState().data.push({
+          symbol: split[i],
+          count: 1,
+          frequency: 1 / store.GetState().textCount,
+        });
       }
     } else {
       let index = store.GetState().data.indexOf(result);
       store.GetState().data[index].count++;
+
+      let a = store.GetState().data[index].count;
+      let b = store.GetState().textCount;
+      store.GetState().data[index].frequency = a / b;
     }
   }
   store.GetState().data.sort(compare);
@@ -66,6 +76,10 @@ export const TextAreaCreator = (text) => ({
 
 export const ClearCreator = (text) => ({
   type: CLEAR,
+});
+
+export const ChangeGistogrammaCreator = (text) => ({
+  type: CHANGE_GISTOGRAMMA,
 });
 
 export default store;

@@ -4,7 +4,8 @@ const ResultItem = (props) => {
   return (
     <div className={s.item}>
       <span>
-        <span className={s.letter}>{props.letter}</span> - {props.count},
+        <span className={s.letter}>{props.letter}</span> - {props.count}(
+        {props.frequency.toFixed(4)}),
       </span>
     </div>
   );
